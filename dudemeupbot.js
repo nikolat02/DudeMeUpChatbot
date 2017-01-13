@@ -1,8 +1,11 @@
 //javascript
 
 var styles = ["Prep","Classic","Contemporoary","Urban","Surfer","Hipster"];
-var events = ["Chinese Water Torture","Liam Neeson's birthday party"]
+var events = ["Chinese Water Torture","Liam Neeson's birthday party"];
+var seasons = ["Fall","Spring","Summer","Winter"];
 var pickedStyle;
+var pickedSeason;
+var pickedEvent;
 
 window.onload = function() {
   getStyleOptions();
@@ -32,7 +35,7 @@ function getEventOptions()
 {
 	var table = document.getElementById('buttonTable');
 	var textArea = document.getElementById('chatArea');
-	textArea.value = textArea.value + '\n' + "Great!  No select the type of event you would like to wear your new clothes to.";
+	textArea.value = textArea.value + '\n' + "Great!  Now select the type of event you will be attending.";
 	while(table.rows.length > 0)
 	{
 		table.deleteRow(0);
@@ -50,11 +53,41 @@ function getEventOptions()
 	}
 }
 
+function getSeasonOptions()
+{
+	var table = document.getElementById('buttonTable');
+	var textArea = document.getElementById('chatArea');
+	textArea.value = textArea.value + '\n' + "Perfect!  Which season would you like to wear these new clothes in?";
+	while(table.rows.length > 0)
+	{
+		table.deleteRow(0);
+	}
+	for (var i = 0; i < seasons.length; i++)
+	{
+		var row = table.insertRow(i);
+		var buttonCell = row.insertCell(0);
+		var button_ele = document.createElement("button");
+		button_ele.innerHTML = seasons[i];
+		button_ele.id = seasons[i] + "button";
+		button_ele.value = seasons[i];
+		button_ele.onclick = function(){seasonClick(this.value);};
+		buttonCell.appendChild(button_ele);
+	}
+}
+
 function styleClick(eleValue)
 {
 	var textArea = document.getElementById('chatArea');
 	textArea.value = textArea.value + '\n' + "User:  Style - " + eleValue;
 	pickedStyle = eleValue;
+	getSeasonOptions();
+}
+
+function seasonClick(eleValue)
+{
+	var textArea = document.getElementById('chatArea');
+	textArea.value = textArea.value + '\n' + "User:  Season - " + eleValue;
+	pickedSeason = eleValue;
 	getEventOptions();
 }
 
@@ -68,10 +101,8 @@ function eventClick(eleValue)
 	{
 		table.deleteRow(0);
 	}
-	textArea.value = textArea.value + "Hold on while I find your new outfit."
+	textArea.value = textArea.value + '\n' + "Hold on while I find your new outfit."
 }
 
 function dbQuery(season, style, event_)
-{
-	
-}
+{}
