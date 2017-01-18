@@ -10,9 +10,9 @@ let MessageObj= require('./createMessage');
 let AdapterMethods = require('./AdapterMethods.js');
 
 let bot = new Bot({
-    username: 'testbotsql',
-    apiKey: '6281f398-869f-4224-8a64-c5f27662f5ca',
- 	baseUrl: 'https://5211b561.ngrok.io',
+    username: 'dmutest',
+    apiKey: '17dd5165-9874-45a4-b466-cb17dd512dd0',
+ 	baseUrl: 'https://vrkbbljojg.localtunnel.me',
 });
 
 bot.updateBotConfiguration();
@@ -159,4 +159,4 @@ const findOrCreateSession = (user) => {
 // local server and start listening
 let server = http
     .createServer(bot.incoming())
-    .listen(process.env.PORT || 3978);
+    .listen(process.env.PORT || 8000);

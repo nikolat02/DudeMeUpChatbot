@@ -7,8 +7,8 @@ function reply(message) {
   request({
     url: 'https://api.kik.com/v1/message',
     auth: {
-      user: "testbotsql",
-      pass: "6281f398-869f-4224-8a64-c5f27662f5ca"
+      user: "dmutest",
+      pass: "17dd5165-9874-45a4-b466-cb17dd512dd0",
     },
     method: 'POST',
     json: {
